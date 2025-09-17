@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-  ]
+, "hooks/useYouTube.js", "app/(tabs)/(youtube)/index.jsx", "components/youtube/YouTubeHeader.jsx", "components/youtube/VideoList.jsx", "components/youtube/VideoCard.jsx"  ]
 }

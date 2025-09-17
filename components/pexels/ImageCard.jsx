@@ -51,14 +51,14 @@ export const ImageCard = ({ image, onPress }) => {
 
       {!hasError ? (
         <Image
-          source={{ uri: image.src.original }}
+          source={{ uri: image.src.medium }}
           style={[styles.image, { height: maxHeight }]}
           resizeMode="cover"
           onLoad={handleLoad}
           onError={handleError}
         />
       ) : (
-        <View style={[styles.errorContainer, { height: finalHeight }]}>
+        <View style={[styles.errorContainer, { height: maxHeight }]}>
           <View style={styles.errorPlaceholder} />
         </View>
       )}

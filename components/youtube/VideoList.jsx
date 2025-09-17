@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Text,
   View,
-} from 'react-native';
-import { VideoCard } from './VideoCard';
+} from "react-native";
+import { VideoCard } from "./VideoCard";
 
 export const VideoList = ({
   videos,
@@ -37,9 +37,7 @@ export const VideoList = ({
     );
   }
 
-  const renderItem = ({ item, index }) => (
-    <VideoCard item={item} />
-  );
+  const renderItem = ({ item, index }) => <VideoCard item={item} />;
 
   const keyExtractor = (item, index) => {
     const id = item?.id || index;
@@ -57,7 +55,7 @@ export const VideoList = ({
         <RefreshControl
           refreshing={isRefreshing}
           onRefresh={onRefresh}
-          colors={['#FF0000']}
+          colors={["#FF0000"]}
         />
       }
       onEndReached={onLoadMore}
@@ -68,7 +66,11 @@ export const VideoList = ({
             <ActivityIndicator size="small" color="#FF0000" />
             <Text style={styles.loadingMoreText}>Loading more videos...</Text>
           </View>
-        ) : null
+        ) : (
+          <Text style={styles.copyright}>
+            &copy; Youtube Copyright. All rights reserved.
+          </Text>
+        )
       }
       showsVerticalScrollIndicator={false}
     />
@@ -77,13 +79,13 @@ export const VideoList = ({
 
 const styles = StyleSheet.create({
   list: {
-    padding: 12
+    padding: 12,
   },
   loadingWrap: {
     flex: 1,
     padding: 16,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   loadingText: {
     marginTop: 10,
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   errorText: {
     color: "#b00020",
@@ -116,5 +118,13 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontSize: 14,
     color: "#666",
+  },
+  copyright: {
+    padding: 16,
+    fontSize: 12,
+    color: "#666",
+    textAlign: "center",
+
+    backgroundColor: "#fefefe",
   },
 });

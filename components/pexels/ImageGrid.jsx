@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -9,6 +9,7 @@ import {
   View,
 } from "react-native";
 import { ImageCard } from "./ImageCard";
+import { Ionicons } from "@expo/vector-icons";
 
 export const ImageGrid = ({
   images,
@@ -28,19 +29,21 @@ export const ImageGrid = ({
       </View>
     );
   }
-
   if (error) {
     return (
       <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>{error}</Text>
+        <Ionicons name="alert-circle-outline" size={24} color="#d32f2f" />
+        <Text style={styles.errorText}>No images found</Text>
+
+        {/* <Text style={styles.errorText}>{error}</Text> */}
         <Text style={styles.retryText}>Pull to refresh</Text>
       </View>
     );
   }
 
-  const renderItem = ({ item }) => (
+  const renderItem = useCallback(({ item }) => (
     <ImageCard image={item} onPress={onImagePress} key={item.id} />
-  );
+  ));
 
   const renderFooter = () => {
     if (!isLoadingMore) return null;
@@ -50,6 +53,12 @@ export const ImageGrid = ({
         <Text style={styles.loadingMoreText}>Loading more images...</Text>
       </View>
     );
+  };
+
+  const ListEmptyComponent = () => {
+    <View style={styles.emptyContainer}>
+      <Text style={styles.emptyText}>No images found</Text>
+    </View>;
   };
 
   return (
@@ -69,9 +78,10 @@ export const ImageGrid = ({
           />
         }
         onEndReached={onLoadMore}
-        onEndReachedThreshold={2}
+        onEndReachedThreshold={0.5}
         ListFooterComponent={renderFooter}
         showsVerticalScrollIndicator={false}
+        ListEmptyComponent={ListEmptyComponent}
       />
     </>
   );

@@ -15,22 +15,22 @@ export default function YouTubeLayout() {
           },
         }}
       />
-      <Stack.Screen
-        name="player/[videoId]"
+      {/* <Stack.Screen
+        name="./player/[videoId]"
         options={{
           title: "Video Player",
-          headerShown: true, // Show header for back navigation
+          headerShown: true,
           headerStyle: { backgroundColor: "#fff" },
           headerTintColor: "#000",
           headerTitleStyle: {
             fontWeight: "bold",
           },
 
-          presentation: "card", // or "modal"
+          presentation: "card",
           // Animation for smoother transition
           // animation: "slide_from_right",
         }}
-      />
+      /> */}
     </Stack>
   );
 }

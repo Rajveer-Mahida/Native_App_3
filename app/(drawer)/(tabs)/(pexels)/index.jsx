@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
-import { ImageGrid } from '../../../components/pexels/ImageGrid';
-// import { ImageGrid } from '../../../components/pexels/ImageMap';
-import { ImageModal } from '../../../components/pexels/ImageModal';
-import { usePexels } from '../../../hooks/usePexels';
+import { ImageGrid } from '@/components/pexels/ImageGrid';
+// import { ImageGrid } from '@omponents/pexels/ImageMap';
+import { ImageModal } from '@/components/pexels/ImageModal';
+import { usePexels } from '@/hooks/usePexels';
 
 export default function Pexels() {
   const {

@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
-import { VideoList } from "../../../components/youtube/VideoList";
-import { YouTubeHeader } from "../../../components/youtube/YouTubeHeader";
-import { useYouTube } from "../../../hooks/useYouTube"; // Your existing hook
+import { VideoList } from "@/components/youtube/VideoList";
+import { YouTubeHeader } from "@/components/youtube/YouTubeHeader";
+import { useYouTube } from "@/hooks/useYouTube"; // Your existing hook
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function YouTubeHome() {
@@ -46,7 +46,6 @@ export default function YouTubeHome() {
             onRefresh={onRefresh}
             onLoadMore={loadMore}
             extractVideoId={extractVideoId}
-            
           />
         </View>
       </SafeAreaView>

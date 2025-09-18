@@ -6,8 +6,8 @@ export default function Layout() {
       <Stack.Screen
         name="index"
         options={{
-          title: "Menu",
-          headerShown: true,
+          title: "Pexels Home",
+          headerShown: false,
           headerStyle: { backgroundColor: "#fff" },
           headerTintColor: "#000",
           headerTitleStyle: {
@@ -15,7 +15,6 @@ export default function Layout() {
           },
         }}
       />
-      {/* <Stack.Screen name="(menu)" options={{ headerShown: false }} /> */}
     </Stack>
   );
 }

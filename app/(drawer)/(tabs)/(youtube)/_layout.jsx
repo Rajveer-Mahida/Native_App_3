@@ -1,12 +1,15 @@
 import { Stack } from "expo-router";
 
-export default function Layout() {
+export default function YouTubeLayout() {
   return (
-    <Stack>
+    <Stack
+
+    >
       <Stack.Screen
         name="index"
         options={{
-          title: "Pexels Home",
+          title: "YouTube Home",
+          headerShown: false,
           headerStyle: { backgroundColor: "#fff" },
           headerTintColor: "#000",
           headerTitleStyle: {

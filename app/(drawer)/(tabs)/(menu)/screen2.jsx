@@ -1,10 +1,8 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import SafeView from "../../../components/SafeView";
+import SafeView from "@/components/SafeView";
 import { useRouter } from "expo-router";
 import { ArrowLeft, ArrowRight } from "lucide-react-native";
-
-import { Redirect } from "expo-router";
 
 const Index = () => {
   const router = useRouter();
@@ -12,17 +10,14 @@ const Index = () => {
   return (
     <SafeView>
       <View style={styles.container}>
-        <Text style={styles.header}>Screen 3</Text>
+        <Text style={styles.header}>Screen 2</Text>
 
         <TouchableOpacity
           style={styles.button}
           activeOpacity={0.7}
-          onPress={() => {
-            router.dismissAll();
-            router.replace("/");
-          }}
+          onPress={() => router.push("./screen3")}
         >
-          <Text style={styles.buttonText}>Go to Main Menu</Text>
+          <Text style={styles.buttonText}>Go to Screen 3</Text>
           <ArrowRight size={20} color="#fff" />
         </TouchableOpacity>
 
@@ -33,6 +28,14 @@ const Index = () => {
         >
           <ArrowLeft size={20} color="#fff" />
           <Text style={styles.buttonText}>Go Back</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.button}
+          activeOpacity={0.7}
+          onPress={() => router.replace("(tabs)/(pexels)")}
+        >
+          <Text style={styles.buttonText}> Go to Pexels</Text>
         </TouchableOpacity>
       </View>
     </SafeView>

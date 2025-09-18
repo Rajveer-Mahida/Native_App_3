@@ -1,12 +1,14 @@
 import { Tabs } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
 import { DrawerToggleButton } from "@react-navigation/drawer";
+import { Images, Youtube, Menu } from "lucide-react-native"; // Import only what you need
 
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         headerLeft: () => <DrawerToggleButton />,
+        tabBarActiveTintColor: "#112D4E",
+        tabBarInactiveTintColor: "#9CA3AF", // grayish for inactive
       }}
       initialRouteName="(pexels)"
     >
@@ -15,29 +17,19 @@ export default function TabLayout() {
         options={{
           title: "Pexels",
           headerShadowVisible: false,
-
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? "images" : "images-outline"}
-              color="#112D4E"
-              size={28}
-            />
+          tabBarIcon: ({ color }) => (
+            <Images color={color} size={24} strokeWidth={2.5} />
           ),
         }}
       />
+
       <Tabs.Screen
         name="(youtube)"
         options={{
           title: "YouTube",
           headerShown: true,
           headerShadowVisible: false,
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? "logo-youtube" : "logo-youtube"}
-              color="#112D4E"
-              size={28}
-            />
-          ),
+          tabBarIcon: ({ color }) => <Youtube color={color} size={24} />,
         }}
       />
 
@@ -46,12 +38,8 @@ export default function TabLayout() {
         options={{
           title: "Menu",
           headerShadowVisible: false,
-          tabBarIcon: ({ focused }) => (
-            <Ionicons
-              name={focused ? "menu" : "menu-outline"}
-              color="#112D4E"
-              size={28}
-            />
+          tabBarIcon: ({ color }) => (
+            <Menu color={color} size={24} strokeWidth={2.5} />
           ),
         }}
       />

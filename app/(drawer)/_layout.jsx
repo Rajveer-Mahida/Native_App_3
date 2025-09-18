@@ -4,10 +4,13 @@ import {
   DrawerItemList,
 } from "@react-navigation/drawer";
 import { Image } from "expo-image";
+import { useRouter } from "expo-router";
 import { Drawer } from "expo-router/drawer";
-import { StyleSheet, View, Text } from "react-native"; // ✅ added Text
+import { StyleSheet, View, Text, TouchableOpacity } from "react-native"; // ✅ added Text
 
 const CustomDrawer = (props) => {
+  const router = useRouter();
+
   return (
     <DrawerContentScrollView {...props}>
       {/* Profile Section */}
@@ -24,8 +27,25 @@ const CustomDrawer = (props) => {
       {/* Drawer Items */}
       <DrawerItemList {...props} />
 
+      {/* Menu Direct */}
+
+      <View style={{ alignItems: "center" }}>
+        <TouchableOpacity
+          style={styles.menuButton}
+          onPress={() => router.push("/(tabs)/(menu)")}
+        >
+          <Ionicons name="menu" size={20} color="#fff" />
+          <Text style={styles.menuButtonText}>Go to Menu</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.divider} />
+
       {/* Footer */}
       <View style={styles.footer}>
+        <Text style={styles.footerText}>Marvel Universe</Text>
+        <Text style={styles.footerText}>Copyright © 2025</Text>
+        <Text style={styles.footerText}>All rights reserved</Text>
         <Text style={styles.footerText}>v1.0.0</Text>
       </View>
     </DrawerContentScrollView>
@@ -48,6 +68,8 @@ export default function Layout() {
         options={{
           title: "Home",
           headerShown: false,
+          headerShadowVisible: false,
+
           drawerIcon: ({ focused }) => (
             <Ionicons
               name="home"
@@ -61,6 +83,8 @@ export default function Layout() {
         name="pexels"
         options={{
           title: "Pexels",
+          headerShadowVisible: false,
+
           drawerIcon: ({ focused }) => (
             <Ionicons
               name="images"
@@ -74,9 +98,40 @@ export default function Layout() {
         name="support"
         options={{
           title: "Support",
+          headerShadowVisible: false,
           drawerIcon: ({ focused }) => (
             <Ionicons
               name="help-circle"
+              size={24}
+              color={focused ? "#FFFFFF" : "#000000"}
+            />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
+        name="privacy"
+        options={{
+          title: "Privacy",
+          headerShadowVisible: false,
+          drawerIcon: ({ focused }) => (
+            <Ionicons
+              name="key-sharp"
+              size={24}
+              color={focused ? "#FFFFFF" : "#000000"}
+            />
+          ),
+        }}
+      />
+      <Drawer.Screen
+        name="github"
+        options={{
+          title: "Github Profile",
+          headerShadowVisible: false,
+
+          drawerIcon: ({ focused }) => (
+            <Ionicons
+              name="logo-github"
               size={24}
               color={focused ? "#FFFFFF" : "#000000"}
             />
@@ -110,5 +165,10 @@ const styles = StyleSheet.create({
   footerText: {
     fontSize: 12,
     color: "#888",
+  },
+  divider: {
+    height: 0.2,
+    backgroundColor: "#000",
+    marginTop: 20,
   },
 });
